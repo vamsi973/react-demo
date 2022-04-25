@@ -10,10 +10,10 @@ function Expenses(props) {
     const filterChangeHandler = (filteredYear) => {
         console.log("filter handler", filteredYear);
         setFilteredYear(filteredYear)
-        props.items.filter(el => filteredYear === el.expenseDate.getFullYear().toString())
+        props.items.filter(el => filteredYear === new Date(el.expenseDate).getFullYear().toString())
     }
     const filteredExpenses = props.items.filter(expenses => {
-        return expenses.expenseDate.getFullYear().toString() === filteredYear
+        return new Date(expenses.expenseDate).getFullYear().toString() === filteredYear
     })
     let ExpensesContent = <p>No Expense Found</p>
     if (filteredExpenses.length > 0) {

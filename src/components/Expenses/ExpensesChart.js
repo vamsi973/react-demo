@@ -19,7 +19,7 @@ const ExpensesChart = (props) => {
     ];
 
     for (const expenses of props.expenses) {
-        const expensesMonth = expenses.expenseDate.getMonth();
+        const expensesMonth = new Date(expenses.expenseDate).getMonth();
         chartDataPoints[expensesMonth].value += expenses.expenseAmount
     }
 
