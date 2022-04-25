@@ -1,7 +1,6 @@
 import './ExpenseFilter.css'
 const ExpenseFilter = (props) => {
     const selectedFilterChange = (event) => {
-        console.log(event.target.value);
         props.onChnageFilter(event.target.value)
     }
     return (

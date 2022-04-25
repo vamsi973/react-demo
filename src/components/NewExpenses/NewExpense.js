@@ -9,7 +9,6 @@ const NewExpense = (prop) => {
             ...enteredExpenseData,
             _id: globalId + 1
         }
-        console.log(expense)
         prop.onAddExpenseHandler(expense)
     }
     const startEditingHandler = () => {

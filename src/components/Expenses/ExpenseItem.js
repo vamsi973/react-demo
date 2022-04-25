@@ -8,7 +8,6 @@ function ExpenseItem(props) {
 
     const namechnage = () => {
         setTitle('value update')
-        console.log(title, 11)
     }
     return (
         <li>
