@@ -14,6 +14,8 @@ function App() {
 
   const expenseHandler = (expense) => {
     setExpenses((exp) => {
+      let temp = [expense, ...exp]
+      localStorage.setItem('expenses', JSON.stringify(temp))
       return [expense, ...exp]
     })
   }
