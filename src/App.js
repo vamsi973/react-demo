@@ -1,29 +1,35 @@
 
 import Expenses from './components/Expenses/Expenses'
 import NewExpense from './components/NewExpenses/NewExpense';
-import ExpenseFilter from './components/Expenses/ExpenseFilter'
 import React, { useState } from 'react'
-// const dummyExpensesArr = [
-//   { expenseDate: new Date(2020, 3, 19), expenseAmount: 10, expenseTitle: 'Rent', _id: 1 },
-//   { expenseDate: new Date(2021, 3, 19), expenseAmount: 110, expenseTitle: 'Phone', _id: 2 },
-//   { expenseDate: new Date(2022, 3, 19), expenseAmount: 140, expenseTitle: 'Vamsik', _id: 3 }
-// ];
+
 const dummyExpensesArr = JSON.parse(localStorage.getItem('expenses')) || [];
 function App() {
   const [expenses, setExpenses] = useState(dummyExpensesArr);
 
   const expenseHandler = (expense) => {
     setExpenses((exp) => {
+      console.log(exp, 13);
+      console.log(expense, 15)
       let temp = [expense, ...exp]
       localStorage.setItem('expenses', JSON.stringify(temp))
       return [expense, ...exp]
     })
   }
 
+  const expenseRemoveHandler = (id) => {
+    setExpenses((exp) => {
+      let filter =exp.filter(item => item._id !== id);
+      localStorage.setItem('expenses', JSON.stringify(filter))
+      return exp.filter(item => item._id != id);
+    })
+
+  }
+
   return (
     <div>
       <NewExpense onAddExpenseHandler={expenseHandler} />
-      <Expenses items={expenses} />
+      <Expenses items={expenses} onRemoveExpense={expenseRemoveHandler} />
     </div >
   );
 }

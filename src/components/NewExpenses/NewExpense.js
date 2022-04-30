@@ -1,13 +1,15 @@
 import './NewExpense.css'
 import ExpenseForm from './ExpenseForm';
 import React, { useState } from 'react';
-var globalId = 1;
+import { v4 as uuid } from 'uuid'
+
 const NewExpense = (prop) => {
+    const unique_id = uuid();
     const [isEditing, setIsEditing] = useState(false)
     const saveExpenseData = (enteredExpenseData) => {
         const expense = {
             ...enteredExpenseData,
-            _id: globalId + 1
+            _id: unique_id
         }
         prop.onAddExpenseHandler(expense)
     }
